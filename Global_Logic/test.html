@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding MCQ</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 0;
+    background-color: #e6f1f8;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    color: #007bff;
+    margin: 20px 0;
+}
+
+/* Container for the entire content */
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Question Styling */
+.question {
+    margin-bottom: 30px;
+}
+
+.question h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.question p {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+pre {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+    font-size: 0.9em;
+}
+
+/* Radio Button Options */
+.options {
+    margin-top: 10px;
+}
+
+.options label {
+    display: block;
+    font-size: 1em;
+    margin-bottom: 8px;
+}
+
+.options input[type="radio"] {
+    margin-right: 10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .question h2 {
+        font-size: 1.4em;
+    }
+
+    .question p {
+        font-size: 0.9em;
+    }
+
+    pre {
+        font-size: 0.85em;
+    }
+
+    .options label {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .question h2 {
+        font-size: 1.2em;
+    }
+
+    .question p, .options label {
+        font-size: 0.8em;
+    }
+
+    pre {
+        font-size: 0.75em;
+    }
+
+    .options {
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 375px) {
+    .container {
+        padding: 5px;
+    }
+
+    h1 {
+        font-size: 1.3em;
+    }
+
+    .question h2 {
+        font-size: 1.1em;
+    }
+
+    .question p, .options label {
+        font-size: 0.7em;
+    }
+
+    pre {
+        font-size: 0.7em;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Section [1] - Duration [30 Min]</h1>
+        </div>
+
+        <!-- Question 1 -->
+        <div class="section">
+            <div class="question">
+                <h3>Question 1</h3>
+                <p>The Following Code:</p>
+                <pre>#include <stdio.h>
+void func(int ptr[ ][10][15])
+{ 
+    printf("ptr value %x \n",ptr++);
+    printf("ptr++ value %x",ptr); 
+}
+int main() {
+    int array[12][10][15];    
+    func(array);    
+    return 0; 
+}</pre>
+                <p><strong>What is the difference between the two printed values, assuming int is 4 bytes?</strong></p>
+            </div>
+            <div class="options">
+                <p>Select an Option:</p>
+                <ul>
+                    <br><input type="radio" name="q1"> 440
+                    <br><input type="radio" name="q1"> 60
+                    <br><input type="radio" name="q1"> 150
+                    <br><input type="radio" name="q1"> 600
+                </ul>
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="section">
+            <div class="question">
+                <h3>Question 2</h3>
+                <p>If the following code runs multiple times, after a point, it won't be able to run anymore as it runs out of memory:</p>
+                <pre>#include<stdio.h>
+#include<stdlib.h>
+int main(){
+    int *arr = (int*)malloc(sizeof(int)*5);
+    for(int i=0;i<5;++i)
+        arr[i] = i+1;
+    for(int i=0;i<5;++i)
+        printf("%d ",arr[i]);
+    system("pause");
+}</pre>
+                <p><strong>Introducing a statement after which line will help prevent this problem?</strong></p>
+            </div>
+            <div class="options">
+                <p>Select an Option:</p>
+                <ul>
+                    <br><input type="radio" name="q2"> Line 1
+                    <br><input type="radio" name="q2"> Line 4
+                    <br><input type="radio" name="q2"> Line 5
+                    <br><input type="radio" name="q2"> Line 9
+                </ul>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="section">
+            <div class="question">
+                <h3>Question 3</h3>
+                <p>Consider the given code:</p>
+                <pre>typedef unsigned int uint32;
+#define Register_A *((uint32*)(0x80000000)) /*Address of Register A*/
+#define Register_B *((uint32*)(0x81000000)) /*Address of Register B*/
+
+uint32 Var = 0x1E;
+
+void Func(void)
+{
+    uint32 Var;
+    Var = 0x2E;
+    
+    Register_A = Var;
+    SetRegisterBValue();
+}
+
+void SetRegisterBValue(void)
+{
+    Register_B = Var;
+}</pre>
+                <p><strong>What will be the value of register A and B after building and running this code?</strong></p>
+            </div>
+            <div class="options">
+                <p>Select an Option:</p>
+                <ul>
+                    <br><input type="radio" name="q3"> A = 0x2E and B = 0x2E
+                    <br><input type="radio" name="q3"> A = 0x2E and B = 0x1E
+                    <br><input type="radio" name="q3"> A = 0x1E and B = 0x1E
+                    <br><input type="radio" name="q3"> A = 0x1E and B = 0x2E
+                    <br><input type="radio" name="q3"> Build error
+                </ul>
+            </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="section">
+            <div class="question">
+                <h3>Question 4</h3>
+                <p>Suppose a developer is working on an array and wants to use the 5th element of the array. Which of the following codes should he use?</p>
+                <p><strong>Assume array name = arr</strong></p>
+            </div>
+            <div class="options">
+                <p>Select an Option:</p>
+                <ul>
+                    <br><input type="radio" name="q4"> *(arr+5)
+                    <br><input type="radio" name="q4"> *arr+5
+                    <br><input type="radio" name="q4"> *arr+4
+                    <br><input type="radio" name="q4"> *(arr+4)
+                </ul>
+            </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="section">
+            <div class="question">
+                <h3>Question 5</h3>
+                <p><strong>Which exception will the following code produce?</strong></p>
+                <pre>#include<stdio.h>
+int main()
+{
+int N;
+float sum = 0;
+scanf("%d",&N);
+double i;
+for(i=1;i<=N;i++)
+{
+    sum=(sum+(i/sum));
+}
+printf("\nSum of the series is: %.2f",sum);
+}</pre>
+            </div>
+            <div class="options">
+                <p>Select an Option:</p>
+                <ul>
+                    <br><input type="radio" name="q5"> Null pointer exception
+                    <br><input type="radio" name="q5"> Arithmetic exception
+                    <br><input type="radio" name="q5"> Type error
+                    <br><input type="radio" name="q5"> There is no error in the code
+                </ul>
+            </div>
+        </div>
+
+        <!-- Continue adding questions 6 to 15 here in the same structure -->
+
+        <!-- Question 6 -->
+        <div class="section">
+            <div class="question">
+                <h3>Question 6</h3>
+                <p>Analyze the given code snippet and predict the correct output:</p>
+                <pre>#include <iostream>
+using namespace std;
+int main() {
+    int x = 3;
+    cout << "x++: " << x++ << endl;
+    cout << "++x: " << ++x << endl;
+    return 0;
+}</pre>
+            </div>
+            <div class="options">
+                <p>Select an Option:</p>
+                <ul>
+                    <br><input type="radio" name="q6"> x++: 4, ++x: 6
+                    <br><input type="radio" name="q6"> x++: 3, ++x: 4
+                    <br><input type="radio" name="q6"> x++: 3, ++x: 5
+                    <br><input type="radio" name="q6"> x++: 4, ++x: 5
+                </ul>
+            </div>
+        </div>
+
+        <!-- Question 7 -->
+        <div class="section">
+            <div class="question">
+                <h3>Question 7</h3>
+                <p><strong>What will the following C code output?</strong></p>
+                <pre>#include<stdio.h>
+int main() {
+    int arr[3] = {10, 20, 30};
+    int *ptr = arr;
+    printf("%d ", *(ptr + 1));
+    return 0;
+}</pre>
+            </div>
+            <div class="options">
+                <p>Select an Option:</p>
+                <ul>
+                    <br><input type="radio" name="q7"> 10
+                    <br><input type="radio" name="q7"> 20
+                    <br><input type="radio" name="q7"> 30
+                    <br><input type="radio" name="q7"> Garbage value
+                </ul>
+            </div>
+        </div>
+
+        <!-- Question 8 -->
+<div class="section">
+    <div class="question">
+        <h3>Question 8</h3>
+        <p>What will the following code output?</p>
+        <pre>#include<stdio.h>
+int main() {
+    int a = 10;
+    printf("%d", a++ + ++a);
+    return 0;
+}</pre>
+    </div>
+    <div class="options">
+        <p>Select an Option:</p>
+        <ul>
+            <br><input type="radio" name="q8"> 21
+            <br><input type="radio" name="q8"> 20
+            <br><input type="radio" name="q8"> 22
+            <br><input type="radio" name="q8"> Undefined behavior
+        </ul>
+    </div>
+</div>
+
+<!-- Question 9 -->
+<div class="section">
+    <div class="question">
+        <h3>Question 9</h3>
+        <p>What is the output of the following code?</p>
+        <pre>#include <stdio.h>
+int main() {
+    int a = 5;
+    int b = 10;
+    int result = a && b;
+    printf("%d", result);
+    return 0;
+}</pre>
+    </div>
+    <div class="options">
+        <p>Select an Option:</p>
+        <ul>
+            <br><input type="radio" name="q9"> 0
+            <br><input type="radio" name="q9"> 5
+            <br><input type="radio" name="q9"> 10
+            <br><input type="radio" name="q9"> 1
+        </ul>
+    </div>
+</div>
+
+<!-- Question 10 -->
+<div class="section">
+    <div class="question">
+        <h3>Question 10</h3>
+        <p>Which of the following is not a valid storage class in C?</p>
+    </div>
+    <div class="options">
+        <p>Select an Option:</p>
+        <ul>
+            <br><input type="radio" name="q10"> static
+            <br><input type="radio" name="q10"> volatile
+            <br><input type="radio" name="q10"> auto
+            <br><input type="radio" name="q10"> register
+        </ul>
+    </div>
+</div>
+
+<!-- Question 11 -->
+<div class="section">
+    <div class="question">
+        <h3>Question 11</h3>
+        <p>Consider the following snippet:</p>
+        <pre>int arr[5] = {1, 2, 3, 4, 5};
+int *p = arr;
+p++;
+printf("%d", *p);</pre>
+        <p>What will the output be?</p>
+    </div>
+    <div class="options">
+        <p>Select an Option:</p>
+        <ul>
+            <br><input type="radio" name="q11"> 1
+            <br><input type="radio" name="q11"> 2
+            <br><input type="radio" name="q11"> 3
+            <br><input type="radio" name="q11"> Undefined behavior
+        </ul>
+    </div>
+</div>
+
+<!-- Question 12 -->
+<div class="section">
+    <div class="question">
+        <h3>Question 12</h3>
+        <p>What is the size of an empty structure in C?</p>
+    </div>
+    <div class="options">
+        <p>Select an Option:</p>
+        <ul>
+            <br><input type="radio" name="q12"> 0 bytes
+            <br><input type="radio" name="q12"> 1 byte
+            <br><input type="radio" name="q12"> 2 bytes
+            <br><input type="radio" name="q12"> It is not allowed
+        </ul>
+    </div>
+</div>
+
+<!-- Question 13 -->
+<div class="section">
+    <div class="question">
+        <h3>Question 13</h3>
+        <p>Consider the following C snippet:</p>
+        <pre>#include <stdio.h>
+int main() {
+    int a = 10;
+    printf("%d %d", a, a++);
+    return 0;
+}</pre>
+        <p>What will be the output?</p>
+    </div>
+    <div class="options">
+        <p>Select an Option:</p>
+        <ul>
+            <br><input type="radio" name="q13"> 10 11
+            <br><input type="radio" name="q13"> 10 10
+            <br><input type="radio" name="q13"> 11 11
+            <br><input type="radio" name="q13"> Undefined behavior
+        </ul>
+    </div>
+</div>
+
+<!-- Question 14 -->
+<div class="section">
+    <div class="question">
+        <h3>Question 14</h3>
+        <p>What will the following code print?</p>
+        <pre>#include <stdio.h>
+int main() {
+    int x = 1;
+    printf("%d ", x << 1);
+    return 0;
+}</pre>
+    </div>
+    <div class="options">
+        <p>Select an Option:</p>
+        <ul>
+            <br><input type="radio" name="q14"> 2
+            <br><input type="radio" name="q14"> 1
+            <br><input type="radio" name="q14"> 0
+            <br><input type="radio" name="q14"> Undefined behavior
+        </ul>
+    </div>
+</div>
+
+<!-- Question 15 -->
+<div class="section">
+    <div class="question">
+        <h3>Question 15</h3>
+        <p>What is the correct way to declare a pointer to a function that takes an integer and returns a float?</p>
+    </div>
+    <div class="options">
+        <p>Select an Option:</p>
+        <ul>
+            <br><input type="radio" name="q15"> float *func(int);
+            <br><input type="radio" name="q15"> float (*func)(int);
+            <br><input type="radio" name="q15"> float func(int*);
+            <br><input type="radio" name="q15"> int (*func)(float);
+        </ul>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code B</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .problem-statement, .code-block {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        pre {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .problem-statement {
+            border-bottom: 2px solid #ccc;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        /* Media Queries for Desktop */
+        @media (min-width: 768px) {
+            body {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .container {
+                width: 45%;
+            }
+
+            .problem-statement {
+                border-right: 2px solid #ccc;
+                border-bottom: none;
+                padding-right: 20px;
+            }
+
+            .code-block {
+                padding-left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Problem Statement -->
+    <div class="container problem-statement">
+        <h2>Unique Parenthesization</h2>
+        <p>
+            You have a boolean expression with the following symbols:
+        </p>
+        <ul>
+            <li><strong>'T'</strong> &rarr; true</li>
+            <li><strong>'F'</strong> &rarr; false</li>
+        </ul>
+        <p>
+            And the following operators:
+        </p>
+        <ul>
+            <li><strong>'&amp;'</strong> &rarr; boolean AND</li>
+            <li><strong>'|'</strong> &rarr; boolean OR</li>
+            <li><strong>'^'</strong> &rarr; boolean XOR</li>
+        </ul>
+        <p>
+            You must count the number of ways you can parenthesize the expression so that the value of the expression evaluates to true.
+        </p>
+        
+        <h3>Input</h3>
+        <p>
+            The first line of input contains an integer N, representing the length of the string. The second line of input is the string S, representing the Boolean expression.
+        </p>
+
+        <h3>Output</h3>
+        <p>
+            Print the number of ways concerning mod (%) of 1003.
+        </p>
+
+        <h3>Constraints</h3>
+        <ul>
+            <li>1 &lt;= N &lt;= 100</li>
+        </ul>
+
+        <h3>Example #1</h3>
+        <pre>
+Input:
+7
+T&T|F^T
+
+Output:
+2
+
+Explanation:
+There are two ways to parenthesize this expression that evaluates to true:
+((T&T) | (F^T)) and (T&(T|(F^T)))
+        </pre>
+
+        <h3>Example #2</h3>
+        <pre>
+Input:
+5
+T&F^T
+
+Output:
+2
+
+Explanation:
+There are two ways to parenthesize this expression that evaluates to true:
+(T&(F^T)) and ((T&F)^T)
+        </pre>
+    </div>
+
+    <!-- C Solution -->
+    <div class="container code-block">
+        <h2>C Code Solution</h2>
+        <pre>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+#define MOD 1003
+
+// Function to solve the problem
+int solve(int N, char* S) {
+    int TrueDP[N][N];
+    int FalseDP[N][N];
+    
+    // Initialize the DP tables
+    memset(TrueDP, 0, sizeof(TrueDP));
+    memset(FalseDP, 0, sizeof(FalseDP));
+    
+    // Base case: single characters
+    for (int i = 0; i < N; i += 2) {
+        if (S[i] == 'T') {
+            TrueDP[i][i] = 1;
+        } else {
+            FalseDP[i][i] = 1;
+        }
+    }
+    
+    // Fill the tables
+    for (int length = 3; length <= N; length += 2) {
+        for (int i = 0; i <= N - length; i += 2) {
+            int j = i + length - 1;
+            
+            for (int k = i + 1; k < j; k += 2) {
+                char op = S[k];
+                
+                int LT = TrueDP[i][k - 1];
+                int LF = FalseDP[i][k - 1];
+                int RT = TrueDP[k + 1][j];
+                int RF = FalseDP[k + 1][j];
+                
+                if (op == '&amp;') {
+                    TrueDP[i][j] = (TrueDP[i][j] + LT * RT) % MOD;
+                    FalseDP[i][j] = (FalseDP[i][j] + LT * RF + LF * RT + LF * RF) % MOD;
+                } else if (op == '|') {
+                    TrueDP[i][j] = (TrueDP[i][j] + LT * RT + LT * RF + LF * RT) % MOD;
+                    FalseDP[i][j] = (FalseDP[i][j] + LF * RF) % MOD;
+                } else if (op == '^') {
+                    TrueDP[i][j] = (TrueDP[i][j] + LT * RF + LF * RT) % MOD;
+                    FalseDP[i][j] = (FalseDP[i][j] + LT * RT + LF * RF) % MOD;
+                }
+            }
+        }
+    }
+    
+    return TrueDP[0][N - 1];
+}
+
+// Main function to take input and call solve
+int main() {
+    int N;
+    scanf("%d", &N);
+    
+    char S[N+1];
+    scanf("%s", S);
+    
+    int result = solve(N, S);
+    printf("%d\n", result);
+    
+    return 0;
+        </pre>
+    </div>
+
+</body>
+</html>

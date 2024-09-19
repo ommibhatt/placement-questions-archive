@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code A</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .problem-statement, .code-block {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        pre {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .problem-statement {
+            border-bottom: 2px solid #ccc;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        /* Media Queries for Desktop */
+        @media (min-width: 768px) {
+            body {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .container {
+                width: 45%;
+            }
+
+            .problem-statement {
+                border-right: 2px solid #ccc;
+                border-bottom: none;
+                padding-right: 20px;
+            }
+
+            .code-block {
+                padding-left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Problem Statement -->
+    <div class="container problem-statement">
+        <h2>Rearrange String</h2>
+        <p>
+            You have a string <strong>S</strong>. Your task is to rearrange some characters of the string (if needed) so that s[i] is not equal to S[L-1-i] for each 0 &lt; i &lt; (L-1)/2, where L is the length of S.
+        </p>
+        <p>
+            If multiple rearrangements exist, return the one that comes earliest alphabetically. If there is no answer, print 'impossible.'
+        </p>
+        <h3>Input</h3>
+        <p>The input contains the string S.</p>
+
+        <h3>Output</h3>
+        <p>Print 'impossible' if there is no answer. Otherwise, print a lexicographical first string that satisfies the given requirements.</p>
+
+        <h3>Constraints</h3>
+        <ul>
+            <li>1 &lt;= L &lt;= 10<sup>4</sup></li>
+        </ul>
+
+        <h3>Example #1</h3>
+        <pre>
+Input:
+abca
+
+Output:
+aabc
+
+Explanation:
+We need to move the second 'a' at the beginning of the string so that S[0] != S[3], S[1] != S[2], and 'aabc' is the alphabetically smallest string among all valid answers.
+        </pre>
+
+        <h3>Example #2</h3>
+        <pre>
+Input:
+aaaa
+
+Output:
+impossible
+
+Explanation:
+There is no way to rearrange the characters of the given string in the required manner.
+        </pre>
+    </div>
+
+    <!-- Python Solution -->
+    <div class="container code-block">
+        <h2>Python Solution</h2>
+        <pre>
+#!/bin/python3
+import os
+
+# Implement method/function with name 'solve'
+def solve(S):
+    L = len(S)
+    
+    # If the string length is 1, it's already valid
+    if L == 1:
+        return S
+
+    # Sort the string to get the lexicographically smallest version
+    sorted_S = sorted(S)
+
+    # Check the condition: s[i] should not be equal to s[L-1-i] for each 0 < i < (L-1)/2
+    def is_valid(arranged_S):
+        for i in range((L-1)//2 + 1):
+            if arranged_S[i] == arranged_S[L-1-i]:
+                return False
+        return True
+
+    # Try the sorted version of the string first
+    if is_valid(sorted_S):
+        return ''.join(sorted_S)
+
+    # If sorted version does not work, it is impossible to rearrange
+    return "impossible"
+
+if __name__ == "__main__":
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+    
+    S = input()
+    outcome = solve(S)
+    
+    fptr.write(str(outcome) + '\n')
+    fptr.close()
+        </pre>
+    </div>
+
+</body>
+</html>

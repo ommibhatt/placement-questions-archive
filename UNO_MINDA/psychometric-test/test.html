@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psychometric Test</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .progress {
+            height: 20px;
+            background-color: #007bff;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .question-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .statement {
+            width: 45%;
+            text-align: center;
+        }
+
+        .separator {
+            width: 10px;
+            border-left: 1px solid #ddd;
+            height: auto;
+            margin: 0 10px;
+        }
+
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .option {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-size: 1.2em;
+        }
+
+        .option:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .option.selected {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .next-button {
+            display: block;
+            margin: 0 auto;
+            padding: 12px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .next-button:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Psychometric Test</h1>
+    </header>
+
+    <div class="container">
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+        <div class="question-container">
+            <div class="statement" id="statementA">
+                I believe in knowledge for knowledge sake.
+            </div>
+            <div class="separator"></div>
+            <div class="statement" id="statementB">
+                I believe that knowledge without application is futile.
+            </div>
+        </div>
+        <div class="options">
+            <div class="option" data-value="1">1</div>
+            <div class="option" data-value="2">2</div>
+            <div class="option" data-value="3">3</div>
+            <div class="option" data-value="4">4</div>
+            <div class="option" data-value="5">5</div>
+            <div class="option" data-value="6">6</div>
+            <div class="option" data-value="7">7</div>
+        </div>
+        <button class="next-button" id="nextButton" disabled>Next →</button>
+    </div>
+    <script>
+        const options = document.querySelectorAll('.option');
+        const nextButton = document.getElementById('nextButton');
+        const progress = document.getElementById('progress');
+        const statementA = document.getElementById('statementA');
+        const statementB = document.getElementById('statementB');
+
+        let currentQuestion = 1;
+        const totalQuestions = 24; // Set to 24 since Q25 doesn't exist
+
+        const questions = [
+            { A: "I believe in knowledge for knowledge sake.", B: "I believe that knowledge without application is futile." },
+            { A: "I can think of most in genuine and uncommon solutions to a problem.", B: "I generally apply common sense to find solutions to a problem." },
+            { A: "I believe in innovating and changing the existing system.", B: "I believe in maintaining and improving the existing system to make it effective." },
+            { A: "I believe in planning and preparing in advance for any project.", B: "I believe in spontaneity and improvisation in executing a project." },
+            { A: "I am a frank and outgoing person.", B: "I am a reserved person and interact on need basis." },
+            { A: "I like being the centre of attention at any gathering or a party.", B: "I like to remain in background and not draw attention in a gathering or a party." },
+            { A: "I like to keep my space clean, tidy and organized.", B: "I don't mind my space being messy if it's functionally comfortable." },
+            { A: "In my spare time, I would like to finish my pending work or improve on it.", B: "I would like to utilize my spare time in relaxing." },
+            { A: "I indulge in meticulous planning before starting the execution of any project.", B: "I start the execution of a project immediately and plan alongside based on developments." },
+            { A: "I am, by nature, a talkative person.", B: "I am, by nature, a quiet person." },
+            { A: "I am interested in abstract ideas and concepts.", B: "I am interested in tangible ideas and practical details." },
+            { A: "I believe in the concept of social responsibility and service to others.", B: "I believe that self-service is a prerequisite for serving others." },
+            { A: "I am a stickler for punctuality and timings.", B: "I take it easy on punctuality and timings." },
+            { A: "I am sympathetic and easily moved by people's predicaments.", B: "I am tough-minded and believe in reason over emotions." },
+            { A: "I like sharing my thoughts and feelings with others.", B: "I share personal thoughts and feelings only with close friends." },
+            { A: "I am easily influenced and persuaded by people to accept their point of view.", B: "I am difficult to influence or persuade and stick to my point of view." },
+            { A: "I stay calm and composed despite pressure and deadlines.", B: "I worry to keep up with pressures and deadlines." },
+            { A: "I believe in inventing entirely new alternatives to suit new situations.", B: "I believe in building upon the existing solutions to suit new situations." },
+            { A: "Given a choice, I would like to enjoy with a group of people.", B: "Given a choice, I would like to enjoy my solitude and privacy." },
+            { A: "I can compromise on my stand and views to facilitate things.", B: "I do not compromise on my stand and views to facilitate things." },
+            { A: "I am generous in trusting and serving others.", B: "I don't trust people easily before verifying their credentials." },
+            { A: "I am generally calm and relaxed and don't get worked up easily.", B: "I constantly keep exerting myself to exceed expectations." },
+            { A: "I am untroubled by challenges and difficulties.", B: "I get anxious when faced with challenges and difficulties." },
+            { A: "I can think of most in genuine and uncommon solutions to a problem.", B: "I generally apply common sense to find solutions to a problem." }
+        ];
+
+        function updateProgress() {
+            const percent = ((currentQuestion - 1) / totalQuestions) * 100;
+            progress.style.width = `${percent}%`;
+        }
+
+        function loadQuestion() {
+            const question = questions[currentQuestion - 1];
+            statementA.textContent = question.A;
+            statementB.textContent = question.B;
+            options.forEach(option => option.classList.remove('selected'));
+            nextButton.disabled = true;
+        }
+
+        options.forEach(option => {
+            option.addEventListener('click', function () {
+                options.forEach(o => o.classList.remove('selected'));
+                this.classList.add('selected');
+                nextButton.disabled = false;
+            });
+        });
+
+        nextButton.addEventListener('click', function () {
+            if (currentQuestion < totalQuestions) {
+                currentQuestion++;
+                loadQuestion();
+                updateProgress();
+            } else {
+                alert('You have completed the test.');
+                // Redirect to results or another page if needed
+            }
+        });
+
+        window.onload = function () {
+            loadQuestion();
+            updateProgress();
+        };
+    </script>
+</body>
+</html>

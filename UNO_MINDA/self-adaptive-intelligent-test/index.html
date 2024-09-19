@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligent Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .instructions, .question, #submitMessage {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-left: 4px solid #007bff;
+            margin-bottom: 20px;
+        }
+        .question {
+            display: none;
+        }
+        #submitMessage {
+            display: none;
+        }
+        footer {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        button, .option {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+        button:hover, .option:hover {
+            background-color: #0056b3;
+        }
+        .submit-btn {
+            margin-top: 20px;
+            padding: 12px 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <h1>Self-Adaptive Intelligent Test</h1>
+
+        <!-- Instructions Section -->
+        <div class="instructions" id="instructions">
+            <h2>Instructions</h2>
+            <p>This is a self-adaptive intelligent test. This test has 60 questions and will take approximately 59 minutes to complete. You will see one question at a time. All questions are compulsory and cannot be skipped. You will only get one attempt per question, and once answered, you cannot return to it.</p>
+            <p>Please note that this examination does not constitute an offer of employment by any participating organization. Your admission to this examination is strictly provisional. Ensure that you meet the eligibility criteria before proceeding.</p>
+            <p>While the assessment is ongoing,test platform monitors every activity, including your browsing movements, time taken per question, and IP address. If you move away from the browser tab, your assessment will end, and your score will be calculated based on the questions attempted up to that point. You will be visually monitored via webcam, and random photos will be taken to prevent fraud. You are solely responsible for any malpractice.</p>
+            <p>Recommended browsers for the web interface are Chrome, Mozilla Firefox, and Microsoft Edge on Windows or other operating systems, and Safari on iOS. For mobile, a latest Chrome browser is compatible with all OS like Android, Windows, and iOS. Internet Explorer is not recommended.</p>
+            <p>In case of internet breakdown, take a screenshot with a timestamp and send it to XYZ@mindagroup.com.</p>
+            <button id="startTest">Start Test</button>
+        </div>
+
+        <!-- Question Section -->
+        <div id="testForm">
+
+            <!-- Add Questions 1 -->
+            <div class="question" id="question1">
+                <h3>Question 1</h3>
+                <p>If a linear uniform array consists of 9 isotropic elements separated by λ/4, what would be the directivity of a broadside array in dB?</p>
+                <button class="option" data-next="2">9.02 dB</button>
+                <button class="option" data-next="2">7.99 dB</button>
+                <button class="option" data-next="2">8.55 dB</button>
+                <button class="option" data-next="2">6.53 dB</button>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question" id="question2">
+                <h3>Question 2</h3>
+                <p>The information rate R for a given average information H = 2.0 for an analog signal band limited to B Hz is:</p>
+                <button class="option" data-next="3">8 B bits/sec</button>
+                <button class="option" data-next="3">16 B bits/sec</button>
+                <button class="option" data-next="3">2 B bits/sec</button>
+                <button class="option" data-next="3">4 B bits/sec</button>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question" id="question3">
+                <h3>Question 3</h3>
+                <p>What does the below-stated OR Law imply, while performing OR operation of an input with '1'?</p>
+                <button class="option" data-next="4">Output will always be same</button>
+                <button class="option" data-next="4">Output will always be high</button>
+                <button class="option" data-next="4">Output will always be low</button>
+                <button class="option" data-next="4">Output will always be equal to input</button>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question" id="question4">
+                <h3>Question 4</h3>
+                <p>Which gates are sequentially cascaded in an AOI (AND-OR-INVERT) configuration?</p>
+                <button class="option" data-next="5">AND-OR-NOR</button>
+                <button class="option" data-next="5">AND-OR-NOT</button>
+                <button class="option" data-next="5">AND-OR-EX-OR</button>
+                <button class="option" data-next="5">AND-OR-AND</button>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question" id="question5">
+                <h3>Question 5</h3>
+                <p>Which reason is responsible for selecting PIC based on Harvard architecture instead of Von-Neumann architecture?</p>
+                <button class="option" data-next="6">Improvement in bandwidth</button>
+                <button class="option" data-next="6">Instruction fetching over a single cycle</button>
+                <button class="option" data-next="6">All of the above</button>
+                <button class="option" data-next="6">Independent bus access for data memory</button>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question" id="question6">
+                <h3>Question 6</h3>
+                <p>The output of a sequential circuit is regarded as a function of time sequence of __________.</p>
+                <button class="option" data-next="7">Inputs and Internal States</button>
+                <button class="option" data-next="7">Outputs and Internal States</button>
+                <button class="option" data-next="7">Outputs and External States</button>
+                <button class="option" data-next="7">Inputs and External States</button>
+        </div>
+
+        <!-- Question 7 -->
+        <div class="question" id="question7">
+            <h3>Question 7</h3>
+            <p>Which among the following is/are taken into account for post-layout simulation?</p>
+                <button class="option" data-next="8">All of the above</button>
+                <button class="option" data-next="8"> Logic cells</button>
+                <button class="option" data-next="8">Propagation delays</button>
+                <button class="option" data-next="8">Interconnect delays</button>
+        </div>
+
+        <!-- Question 8 -->
+        <div class="question" id="question8">
+            <h3>Question 8</h3>
+            <p>Which property of delta function indicates the equality between the area under the product of function with shifted impulse and the value of function located at unit impulse instant?</p>
+                <button class="option" data-next="9">Product</button>
+                <button class="option" data-next="9"> Sampling</button>
+                <button class="option" data-next="9">Scaling</button>
+                <button class="option" data-next="9">Replication</button>
+        </div>
+
+        <!-- Question 9 -->
+        <div class="question" id="question9">
+            <h3>Question 9</h3>
+            <p>The circular convolution of two sequences in the time domain is equivalent to:</p>
+                <button class="option" data-next="10">Multiplication of DFTs of two sequences</button>
+                <button class="option" data-next="10">Difference of DFTs of two sequences</button>
+                <button class="option" data-next="10">Square of multiplication of DFTs of two sequences</button>
+                <button class="option" data-next="10">Summation of DFTs of two sequences</button>
+        </div>
+
+        <!-- Question 10 -->
+        <div class="question" id="question10">
+            <h3>Question 10</h3>
+            <p>A 100MHz carrier is frequency modulated by 10 KHz wave. For a frequency deviation of 50 KHz, calculate the modulation index of the FM signal.</p>
+                <button class="option" data-next="11">50</button>
+                <button class="option" data-next="11">100</button>
+                <button class="option" data-next="11">70</button>
+                <button class="option" data-next="11">90</button>
+        </div>
+
+        <!-- Question 11 -->
+        <div class="question" id="question11">
+            <h3>Question 11</h3>
+            <p>What is the value of base current if the common base circuit configuration offers an emitter current of 3 mA, collector current of 1.5 mA along with the reverse saturation current is 11 mA?</p>
+                <button class="option" data-next="12">0.15 mA</button>
+                <button class="option" data-next="12">3 mA</button>
+                <button class="option" data-next="12">0.20 mA</button>
+                <button class="option" data-next="12">1.5 mA</button>
+        </div>
+
+        <!-- Question 12 -->
+        <div class="question" id="question12">
+            <h3>Question 12</h3>
+            <p>If the value of resonant frequency is 50 kHz in a series RLC circuit along with the bandwidth of about 1 kHz, then what would be the value of quality factor?</p>            
+                <button class="option" data-next="13">50</button>
+                <button class="option" data-next="13">100</button>
+                <button class="option" data-next="13">500</button>
+                <button class="option" data-next="13">5</button>
+        </div>
+
+        <!-- Question 13 -->
+        <div class="question" id="question13">
+            <h3>Question 13</h3>
+            <p>The output of sequential circuit is regarded as a function of time sequence of __________.</p>
+                <button class="option" data-next="14">A & D</button>
+                <button class="option" data-next="14">A & C</button>
+                <button class="option" data-next="14">B & D</button>
+                <button class="option" data-next="14">B & C</button>
+        </div>
+
+        <!-- Question 14 -->
+        <div class="question" id="question14">
+            <h3>Question 14</h3>
+            <p>Which region of drain characteristic displays linearity with the direct variation in current corresponding to voltage especially for lesser values of drain-to-source voltage (VDS) by enabling the JFET to act as an ordinary resistor?</p>            
+                <button class="option" data-next="15">Ohmic Region</button>
+                <button class="option" data-next="15">Saturation Region</button>
+                <button class="option" data-next="15">Breakdown Region</button>
+                <button class="option" data-next="15">Pinch-off Region</button>
+        </div>
+
+        <!-- Question 15 -->
+        <div class="question" id="question15">
+            <h3>Question 15</h3>
+            <p>What is/are the major role/s of Data Link Layer (DLL) in an OSI model?</p>
+                <button class="option" data-next="16">None of the above</button>
+                <button class="option" data-next="16">Only C</button>
+                <button class="option" data-next="16">A, B, C & D</button>
+                <button class="option" data-next="16">Only D</button>
+        </div>
+
+        <!-- Question 16 -->
+        <div class="question" id="question16">
+            <h3>Question 16</h3>
+            <p>Which among the below mentioned assertions is/are correct?</p>
+                <button class="option" data-next="17">Greater the value of correlation function, higher is the similarity level between two signals</button>
+                <button class="option" data-next="17">Greater the value of correlation function, lower is the similarity level between two signals</button>
+                <button class="option" data-next="17">Lesser the value of correlation function, higher is the similarity level between two signals</button>
+                <button class="option" data-next="17">Lesser the value of correlation function, lower is the similarity level between two signals</button>
+        </div>
+
+        <!-- Question 17 -->
+        <div class="question" id="question17">
+            <h3>Question 17</h3>
+            <p>Which among the below mentioned communication assets specifies an agreement of a common language used by the two computers for the purpose of exchanging messages?</p>
+                <button class="option" data-next="18">Datagrams</button>
+                <button class="option" data-next="18">Packets</button>
+                <button class="option" data-next="18">Routers</button>
+                <button class="option" data-next="18">Protocols</button>
+        </div>
+
+        <!-- Question 18 -->
+        <div class="question" id="question18">
+            <h3>Question 18</h3>
+            <p>Match the following FET behavior with respective Drain Characteristic Regions:</p>
+            <ul>
+                <li>1. Resistor -------------------------------------------- A) Breakdown Region</li>
+                <li>2. Constant-Current Source ------------------ B) Ohmic Region</li>
+                <li>3. Constant-Voltage Source ------------------ C) Pinch-off Region</li>
+            </ul>
+                <button class="option" data-next="19">1-A, 2-C, 3-B</button>
+                <button class="option" data-next="19">1-C, 2-B, 3-A</button>
+                <button class="option" data-next="19">1-A, 2-B, 3-C</button>
+                <button class="option" data-next="19">1-B, 2-C, 3-A</button>
+        </div>
+
+        <!-- Question 19 -->
+        <div class="question" id="question19">
+            <h3>Question 19</h3>
+            <p>Which among the following operations is/are not involved /associated with the computation process of linear convolution?</p>
+                <button class="option" data-next="20">Multiplication Operation</button>
+                <button class="option" data-next="20">Integration Operation</button>
+                <button class="option" data-next="20">Folding Operation</button>
+                <button class="option" data-next="20">Shifting Operation</button>
+        </div>
+
+        <!-- Question 20 -->
+        <div class="question" id="question20">
+            <h3>Question 20</h3>
+            <p>In synthesis flow, the flattening process generates a flat signal representation of _____levels.</p>
+                <button class="option" data-next="21">AND</button>
+                <button class="option" data-next="21">OR</button>
+                <button class="option" data-next="21">NOT</button>
+                <button class="option" data-next="21">EX-OR</button>
+        </div>
+
+        <!-- Question 21 -->
+        <div class="question" id="question21">
+            <h3>Question 21</h3>
+            <p>Assuming no ISI, the maximum possible bandwidth of a multimode graded index fiber with 5 MHz, shows the total pulse broadening of 0.1s for the distance of about 12km. What would be the value of bandwidth length product?</p>
+                <button class="option" data-next="22">60 MHz</button>
+                <button class="option" data-next="22">40 MHz</button>
+                <button class="option" data-next="22">90 MHz</button>
+                <button class="option" data-next="22">120 MHz</button>
+        </div>
+
+        <!-- Question 22 -->
+        <div class="question" id="question22">
+            <h3>Question 22</h3>
+            <p>Which conceptual notion introduced by Maxwell, indicates the generation of magnetic field in an empty free space?</p>
+                <button class="option" data-next="23">Project current</button>
+                <button class="option" data-next="23">Displacement current</button>
+                <button class="option" data-next="23">Acceleration current</button>
+                <button class="option" data-next="23">Velocity Vector current</button>
+        </div>
+
+        <!-- Question 23 -->
+        <div class="question" id="question23">
+            <h3>Question 23</h3>
+            <p>Which type of branching instructions of thumb possesses 11-bit address & is generally applicable for slightly longer jumps in order to implement the instructions like GOTO of high level languages?</p>
+                <button class="option" data-next="24">Short Conditional Branch</button>
+                <button class="option" data-next="24">Long Range Subroutine Calls</button>
+                <button class="option" data-next="24">Medium Range Unconditional Branch</button>
+                <button class="option" data-next="24">None of the above</button>
+        </div>
+
+        <!-- Question 24 -->
+        <div class="question" id="question24">
+            <h3>Question 24</h3>
+            <p>According to transfer characteristics of PLL, the phase error between VCO output & incoming signal must be maintained between _______ in order to maintain a lock.</p>
+                <button class="option" data-next="25">π & 2π</button>
+                <button class="option" data-next="25">0 & π</button>
+                <button class="option" data-next="25">0 & π/2</button>
+                <button class="option" data-next="25">0 & 2π</button>
+        </div>
+
+        <!-- Question 25 -->
+        <div class="question" id="question25">
+            <h3>Question 25</h3>
+            <p>Consider that the pole is located at origin and its Laplace representation is 1/s. What would be the nature of pole response?</p>
+                <button class="option" data-next="26">Sinusoidal</button>
+                <button class="option" data-next="26">Decaying exponential</button>
+                <button class="option" data-next="26">Rising exponential</button>
+                <button class="option" data-next="26">Constant value</button>
+        </div>
+
+        <!-- Question 26 -->
+        <div class="question" id="question26">
+            <h3>Question 26</h3>
+            <p>In SPI bus, which signal line carries data from master to slave device & hence regarded as Slave Input/Slave Data In (SI/SDI)?</p>
+                <button class="option" data-next="27">Serial Clock (SCLK)</button>
+                <button class="option" data-next="27">Slave Select (SS)</button>
+                <button class="option" data-next="27">Master In Slave Out (MISO)</button>
+                <button class="option" data-next="27">Master Out Slave In (MOSI)</button>
+        </div>
+
+        <!-- Question 27 -->
+        <div class="question" id="question27">
+            <h3>Question 27</h3>
+            <p>For two vectors to be orthonormal, the vectors are also said to be orthogonal. The reverse of the same:</p>
+                <button class="option" data-next="28">None of the above</button>
+                <button class="option" data-next="28">Is not predictable</button>
+                <button class="option" data-next="28">Is not true</button>
+                <button class="option" data-next="28">Is true</button>
+        </div>
+
+        <!-- Question 28 -->
+        <div class="question" id="question28">
+            <h3>Question 28</h3>
+            <p>Which among the following characteristics of Laser light specifies the precise movement of all individual light waves together through time and space?</p>
+                <button class="option" data-next="29">Brightness</button>
+                <button class="option" data-next="29">Coherent</button>
+                <button class="option" data-next="29">Monochromatic</button>
+                <button class="option" data-next="29">Directional</button>
+        </div>
+
+        <!-- Question 29 -->
+        <div class="question" id="question29">
+            <h3>Question 29</h3>
+            <p>The Chebyshev filters have:</p>
+                <button class="option" data-next="30">Flat pass band</button>
+                <button class="option" data-next="30">Flat stop band</button>
+                <button class="option" data-next="30">Equiripple pass band</button>
+                <button class="option" data-next="30">Tapering stop band</button>
+        </div>
+
+        <!-- Question 30 -->
+        <div class="question" id="question30">
+            <h3>Question 30</h3>
+            <p>Which region of drain characteristic displays linearity with the direct variation in current corresponding to voltage especially for lesser values of drain-to-source voltage (VDS) by enabling the JFET to act as an ordinary resistor?</p>
+                <button class="option" data-next="31">Saturation Region</button>
+                <button class="option" data-next="31">Pinch-off Region</button>
+                <button class="option" data-next="31">Ohmic Region</button>
+                <button class="option" data-next="31">Breakdown Region</button>
+        </div>
+
+        <!-- Question 31 -->
+        <div class="question" id="question31">
+            <h3>Question 31</h3>
+            <p>Which mode is produced by a positive swing in gate-to-source voltage by input ac signal with the maximum voltage drop across load resistor in DE-MOSFET amplifier circuit?</p>
+                <button class="option" data-next="32">Depletion mode with decrease in drain current</button>
+                <button class="option" data-next="32">Enhancement mode with an increase in drain current</button>
+                <button class="option" data-next="32">Depletion mode with an increase in drain current</button>
+                <button class="option" data-next="32">Enhancement mode with decrease in drain current</button>
+        </div>
+
+        <!-- Question 32 -->
+        <div class="question" id="question32">
+            <h3>Question 32</h3>
+            <p>The method used for screening of products along with the design evaluation in order to catch early-term latent defects is renowned as Environmental Stress Screening (ESS) or __________</p>
+                <button class="option" data-next="33">Burn-in testing</button>
+                <button class="option" data-next="33">Burn-below testing</button>
+                <button class="option" data-next="33">Burn-out testing</button>
+                <button class="option" data-next="33">Burn-above testing</button>
+        </div>
+
+        <!-- Question 33 -->
+        <div class="question" id="question33">
+            <h3>Question 33</h3>
+            <p>What will be the value of current in the following circuit consisting of two oppositely connected ideal diodes in parallel?</p>
+            <img src="img1.png" alt="Circuit Diagram">
+                <button class="option" data-next="34">2 A</button>
+                <button class="option" data-next="34">5 A</button>
+                <button class="option" data-next="34">1 A</button>
+                <button class="option" data-next="34">15 A</button>
+        </div>
+
+        <!-- Question 34 -->
+        <div class="question" id="question34">
+            <h3>Question 34</h3>
+            <p>The digital modulation technique in which the step size is varied according to the variation in the slope of the input is called:</p>
+                <button class="option" data-next="35">PAM</button>
+                <button class="option" data-next="35">Adaptive delta modulation</button>
+                <button class="option" data-next="35">Delta modulation</button>
+                <button class="option" data-next="35">PCM</button>
+        </div>
+
+        <!-- Question 35 -->
+        <div class="question" id="question35">
+            <h3>Question 35</h3>
+            <p>An AM transmitter has an antenna current changing from 5 A unmodulated to 5.8 A. What is the percentage of modulation?</p>
+                <button class="option" data-next="36">25.2%</button>
+                <button class="option" data-next="36">83.14%</button>
+                <button class="option" data-next="36">46.8%</button>
+                <button class="option" data-next="36">38.8%</button>
+        </div>
+
+        <!-- Question 36 -->
+        <div class="question" id="question36">
+            <h3>Question 36</h3>
+            <p>The advantage of using the cascade form of realization is:</p>
+                <button class="option" data-next="37">It has the same number of poles and zeros as that of individual components</button>
+                <button class="option" data-next="37">The number of poles is the product of poles of individual components</button>
+                <button class="option" data-next="37">The number of zeros is the product of poles of individual components</button>
+                <button class="option" data-next="37">Over all transfer function may be determined</button>
+        </div>
+
+        <!-- Question 37 -->
+        <div class="question" id="question37">
+            <h3>Question 37</h3>
+            <p>Which among the following assertions represents a necessary condition for the existence of Fourier Transform of discrete time signal (DTFT)?</p>
+                <button class="option" data-next="38">Discrete Time Signal should be absolutely differentiable</button>
+                <button class="option" data-next="38">Discrete Time Signal should be absolutely summable</button>
+                <button class="option" data-next="38">Discrete Time Signal should be absolutely multipliable</button>
+                <button class="option" data-next="38">Discrete Time Signal should be absolutely integrable</button>
+        </div>
+
+        <!-- Question 38 -->
+        <div class="question" id="question38">
+            <h3>Question 38</h3>
+            <p>For a Gaussian channel of 1 MHz bandwidth with the signal power to noise spectral density ratio of about 104 Hz, what would be the maximum information rate?</p>
+                <button class="option" data-next="39">32500 bits/sec</button>
+                <button class="option" data-next="39">12000 bits/sec</button>
+                <button class="option" data-next="39">28000 bits/sec</button>
+                <button class="option" data-next="39">14400 bits/sec</button>
+        </div>
+
+        <!-- Question 39 -->
+        <div class="question" id="question39">
+            <h3>Question 39</h3>
+            <p>Which primary constant of transmission line is exhibits its dependency of value on the cross-sectional area of conductors?</p>
+                <button class="option" data-next="40">nductance (I)</button>
+                <button class="option" data-next="40">Conductance (G)</button>
+                <button class="option" data-next="40">Resistance (R)</button>
+                <button class="option" data-next="40">Capacitance (C)</button>
+        </div>
+
+        <!-- Question 40 -->
+        <div class="question" id="question40">
+            <h3>Question 40</h3>
+            <p>If a port is declared as buffer, then which problem is generated in hierarchical design due to mapping with port of buffer mode of other entities only?</p>
+                <button class="option" data-next="41">Structural Modeling</button>
+                <button class="option" data-next="41">Functional Modeling</button>
+                <button class="option" data-next="41">Data Flow Modeling</button>
+                <button class="option" data-next="41">Behavioral Modeling</button>
+        </div>
+
+        <!-- Question 41 -->
+        <div class="question" id="question41">
+            <h3>Question 41</h3>
+            <p>Which category of microprocessor instructions detect the status conditions in registers and accordingly exhibit the variations in program sequence on the basis of detected results?</p>
+                <button class="option" data-next="42">Control Instructions</button>
+                <button class="option" data-next="42">All of the above</button>
+                <button class="option" data-next="42">Operation Instructions</button>
+                <button class="option" data-next="42">Transfer Instructions</button>
+        </div>
+
+        <!-- Question 42 -->
+        <div class="question" id="question42">
+            <h3>Question 42</h3>
+            <p>Determine the values of load current and output voltage respectively for the below schematic of voltage to current converter with grounded load by assuming that the op-amp is nulled at the inception.</p>
+            <img src="img2.png" alt="Voltage to Current Converter Diagram">
+                <button class="option" data-next="43">30 mA & 4V</button>
+                <button class="option" data-next="43">300 mA & 2V</button>
+                <button class="option" data-next="43">0.3 mA & 4V</button>
+                <button class="option" data-next="43">30 mA & 2V</button>
+        </div>
+
+        <!-- Question 43 -->
+        <div class="question" id="question43">
+            <h3>Question 43</h3>
+            <p>The digital modulation technique in which the step size is varied according to the variation in the slope of the input is called:</p>
+                <button class="option" data-next="44">PAM</button>
+                <button class="option" data-next="44">Adaptive delta modulation</button>
+                <button class="option" data-next="44">PCM</button>
+                <button class="option" data-next="44">Delta modulation</button>
+        </div>
+
+        <!-- Question 44 -->
+        <div class="question" id="question44">
+            <h3>Question 44</h3>
+            <p>Which phenomenon occurs due to an increase in the channel bandwidth during the transmission of narrow pulses in order to avoid any intervention of signal distortion?</p>
+                <button class="option" data-next="45">Expansion in frequency domain</button>
+                <button class="option" data-next="45">Compression in time domain</button>
+                <button class="option" data-next="45">Compression in frequency domain</button>
+                <button class="option" data-next="45">Expansion in time domain</button>
+        </div>
+
+        <!-- Question 45 -->
+        <div class="question" id="question45">
+            <h3>Question 45</h3>
+            <p>Which parameter property defines the predictable nature of input and output relationship for maximum duration of transducer in terms of reliable operation?</p>
+                <button class="option" data-next="46">Repeatability</button>
+                <button class="option" data-next="46">Linearity</button>
+                <button class="option" data-next="46">Sensitivity</button>
+                <button class="option" data-next="46">Reliability</button>
+        </div>
+
+        <!-- Question 46 -->
+        <div class="question" id="question46">
+            <h3>Question 46</h3>
+            <p>Which coding terminology deals with the inverse operation of assigned words of second language corresponding to the words in the first language?</p>
+                <button class="option" data-next="47">Deciphering</button>
+                <button class="option" data-next="47">Enciphering</button>
+                <button class="option" data-next="47">Codeword</button>
+                <button class="option" data-next="47">Codebook</button>
+        </div>
+
+        <!-- Question 47 -->
+        <div class="question" id="question47">
+            <h3>Question 47</h3>
+            <p>Match the following STKY multiplier (MAC) flag notations with their meanings in ADSP 21 xx family architecture.</p>
+                <button class="option" data-next="48">A-2, B-3, C-1, D-4</button>
+                <button class="option" data-next="48">A-3, B-2, C-4, D-1</button>
+                <button class="option" data-next="48">A-1, B-4, C-3, D-2</button>
+                <button class="option" data-next="48">A-4, B-1, C-2, D-3</button>
+        </div>
+
+        <!-- Question 48 -->
+        <div class="question" id="question48">
+            <h3>Question 48</h3>
+            <p>Which value of disc capacitors is preferred or recommended especially when the quartz crystal is connected externally in an oscillator circuit of 8051?</p>
+                <button class="option" data-next="49">10 pF</button>
+                <button class="option" data-next="49">40 pF</button>
+                <button class="option" data-next="49">30 pF</button>
+                <button class="option" data-next="49">20 pF</button>
+        </div>
+
+        <!-- Question 49 -->
+        <div class="question" id="question49">
+            <h3>Question 49</h3>
+            <p>Consider the assertions related to decoding process of cyclic code. Which among the following is a correct sequence of steps necessary for the correction of errors?</p>
+                <button class="option" data-next="50">A, B, C, D</button>
+                <button class="option" data-next="50">B, A, D, C</button>
+                <button class="option" data-next="50">D, A, C, B</button>
+                <button class="option" data-next="50">C, B, D, A</button>
+        </div>
+
+        <!-- Question 50 -->
+        <div class="question" id="question50">
+            <h3>Question 50</h3>
+            <p>The ratio of maximum peak frequency deviation and the maximum modulating signal frequency is termed as:</p>
+                <button class="option" data-next="51">Signal to noise ratio</button>
+                <button class="option" data-next="51">Frequency deviation</button>
+                <button class="option" data-next="51">Deviation ratio</button>
+                <button class="option" data-next="51">Frequency spectrum</button>
+        </div>
+
+        <!-- Question 51 -->
+        <div class="question" id="question51">
+            <h3>Question 51</h3>
+            <p>In DSP processors, which among the following maintains the track of addresses of input data as well as the coefficients stored in data and program memories?</p>
+                <button class="option" data-next="52">Data Address Generators (DAGs)</button>
+                <button class="option" data-next="52">Program sequences</button>
+                <button class="option" data-next="52">Barrel Shifter</button>
+                <button class="option" data-next="52">MAC</button>
+        </div>
+
+        <!-- Question 52 -->
+        <div class="question" id="question52">
+            <h3>Question 52</h3>
+            <p>Which among the following parameters is usually only specified in dual and quad level Op-amps which is precisely known as amplifier to amplifier coupling?</p>
+                <button class="option" data-next="53">Offset V & I Stability</button>
+                <button class="option" data-next="53">Average Temperature coefficient</button>
+                <button class="option" data-next="53">Channel Separation</button>
+                <button class="option" data-next="53">Gain-Bandwidth Product</button>
+        </div>
+
+        <!-- Question 53 -->
+        <div class="question" id="question53">
+            <h3>Question 53</h3>
+            <p>What is the value of anode current of SCR comprising two-transistor analogy with the gate current of 40 mA if the gain of PNP & NPN transistors are 0.3 & 0.4 respectively?</p>
+                <button class="option" data-next="54">253 mA</button>
+                <button class="option" data-next="54">53.33 mA</button>
+                <button class="option" data-next="54">73.33 mA</button>
+                <button class="option" data-next="54">113 mA</button>
+        </div>
+
+        <!-- Question 54 -->
+        <div class="question" id="question54">
+            <h3>Question 54</h3>
+            <p>Calculate the Nyquist rate for sampling when a continuous time signal is given by x(t) = 5 cos 100πt +10 cos 200πt - 15 cos 300πt</p>
+            
+                <button class="option" data-next="55">200Hz</button>
+                <button class="option" data-next="55">150Hz</button>
+                <button class="option" data-next="55">300Hz</button>
+                <button class="option" data-next="55">600Hz</button>
+        </div>
+
+        <!-- Question 55 -->
+        <div class="question" id="question55">
+            <h3>Question 55</h3>
+            <p>Which performance parameter of a regulator is defined as the change in regulated load voltage due to variation in line voltage in a specified range at a constant load current?</p>
+            
+                <button class="option" data-next="56">Ripple rejection</button>
+                <button class="option" data-next="56">Load regulation</button>
+                <button class="option" data-next="56">Line regulation</button>
+                <button class="option" data-next="56">Temperature stability factor</button>
+        </div>
+
+        <!-- Question 56 -->
+        <div class="question" id="question56">
+            <h3>Question 56</h3>
+            <p>The value of dBm in power measurement is estimated by assuming the reference, which is equal to:</p>
+            
+                <button class="option" data-next="57">1/10 mW</button>
+                <button class="option" data-next="57">1/100 mW</button>
+                <button class="option" data-next="57">1 mW</button>
+                <button class="option" data-next="57">10 mW</button>
+        </div>
+
+        <!-- Question 57 -->
+        <div class="question" id="question57">
+            <h3>Question 57</h3>
+            <p>Which type of fiber-optic coupler causes the distribution of an optical power from more than two input ports among the several output ports?</p>
+            
+                <button class="option" data-next="58">Star Coupler</button>
+                <button class="option" data-next="58">Tree Coupler</button>
+                <button class="option" data-next="58">X Coupler</button>
+                <button class="option" data-next="58">All of the above</button>
+        </div>
+
+        <!-- Question 58 -->
+        <div class="question" id="question58">
+            <h3>Question 58</h3>
+            <p>In SM chart for UART transmitter, which state/s indicate/s the waiting of sequential machine for the rising edge of bit clock and the consequent clearing of low order bit of TSR in order to transmit logic '0' for one bit time?</p>
+            
+                <button class="option" data-next="59">Transmit_Data_State</button>
+                <button class="option" data-next="59">All of the above</button>
+                <button class="option" data-next="59">IDLE State</button>
+                <button class="option" data-next="59">Sync State</button>
+        </div>
+
+        <!-- Question 59 -->
+        <div class="question" id="question59">
+            <h3>Question 59</h3>
+            <p>If a port is declared as buffer, then which problem is generated in hierarchical design due to mapping with port of buffer mode of other entities only?</p>
+            
+                <button class="option" data-next="60">Structural Modeling</button>
+                <button class="option" data-next="60">Functional Modeling</button>
+                <button class="option" data-next="60">Data Flow Modeling</button>
+                <button class="option" data-next="60">Behavioral Modeling</button>
+        </div>
+            
+            <!-- Question 60 -->
+            <div class="question" id="question60">
+                <h3>Question 60</h3>
+                <p>Which category of microprocessor instructions detect the status conditions in registers and exhibit variations in program sequence based on the detected results?</p>
+                <button class="option" data-next="submit">Control Instructions</button>
+                <button class="option" data-next="submit">Operation Instructions</button>
+                <button class="option" data-next="submit">Transfer Instructions</button>
+                <button class="option" data-next="submit">All of the above</button>
+            </div>
+
+            <!-- Submit Section -->
+            <div class="question" id="submitSection">
+                <h3>Submit Your Test</h3>
+                <button class="submit-btn" id="submitTest">Submit Test</button>
+            </div>
+        </div>
+
+        <!-- Message After Submission -->
+        <div id="submitMessage">
+            <h2>Test Completed!</h2>
+            <p>Congratulations! You've successfully completed the first section of the test. Please prepare for the next section: <strong>Psychometric Test</strong>. Head back to the homepage to start the next part of your assessment. Best of luck!</p>
+        </div>
+    </div>
+
+    <script>
+        const startTestBtn = document.getElementById('startTest');
+        const instructions = document.getElementById('instructions');
+        const testForm = document.getElementById('testForm');
+        const submitMessage = document.getElementById('submitMessage');
+        const submitTestBtn = document.getElementById('submitTest');
+        const submitSection = document.getElementById('submitSection');
+        let currentQuestion = 1;
+
+        // Start the test by showing the first question
+        startTestBtn.addEventListener('click', () => {
+            instructions.style.display = 'none';
+            showQuestion(currentQuestion);
+        });
+
+        // Function to show a specific question
+        function showQuestion(questionNumber) {
+            const allQuestions = document.querySelectorAll('.question');
+            allQuestions.forEach((question) => {
+                question.style.display = 'none';  // Hide all questions
+            });
+
+            if (questionNumber === 'submit') {
+                submitSection.style.display = 'block';
+            } else {
+                document.getElementById(`question${questionNumber}`).style.display = 'block';  // Show current question
+            }
+
+            // Automatically move to the next question after selecting an option
+            const options = document.querySelectorAll(`#question${questionNumber} .option`);
+            options.forEach(option => {
+                option.addEventListener('click', () => {
+                    const next = option.getAttribute('data-next');
+                    showQuestion(next);
+                });
+            });
+        }
+
+        // Handle test submission
+        submitTestBtn.addEventListener('click', () => {
+            testForm.style.display = 'none';
+            submitMessage.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
