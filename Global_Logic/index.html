@@ -24,6 +24,7 @@
         h1 {
             text-align: center;
             margin-bottom: 20px;
+            font-size: 2.5em;
         }
 
         p.description {
@@ -33,6 +34,42 @@
             color: #555;
         }
 
+        .image-container {
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            max-width: 600px;
+        }
+
+        .image-buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .image-buttons button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #007bff;
+            background-color: white;
+            color: #007bff;
+            font-size: 1em;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .image-buttons button:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
         ul {
             list-style-type: none;
             padding: 0;
@@ -40,29 +77,105 @@
         }
 
         li {
-            margin: 15px 0;
+            margin: 20px 0;
         }
 
         a {
             text-decoration: none;
             color: #007bff;
-            font-size: 1.5em;
+            font-size: 1.7em;
             transition: color 0.3s ease;
         }
 
         a:hover {
             color: #0056b3;
         }
+
+        .tips {
+            margin-top: 30px;
+            font-size: 1em;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            p.description {
+                font-size: 1em;
+                margin-bottom: 30px;
+            }
+
+            .image-container img {
+                max-width: 100%;
+            }
+
+            .image-buttons button {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9em;
+            }
+
+            a {
+                font-size: 1.5em;
+            }
+
+            .tips {
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            p.description {
+                font-size: 0.9em;
+            }
+
+            .tips {
+                font-size: 0.85em;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Global Logic</h1>
+        <p class="description">Assessment Environment: Comprehensive Details Provided</p>
+        <p class="description">Note: This test UI is a prototype created to emulate the actual test environment.</p>
+
+        <div class="image-container">
+            <img id="mainImage" src="Page 1.png" alt="Page 1">
+        </div>
+
+        <div class="image-buttons">
+            <button onclick="switchImage('Page 1.png')">1</button>
+            <button onclick="switchImage('Page 2.png')">2</button>
+            <button onclick="switchImage('Page 3.png')">3</button>
+            <button onclick="switchImage('Page 4.png')">4</button>
+        </div>
+
         <ul>
-            <li><a href="ui.html">Test Enviorment</a></li>
-            <li><a href="test.html">Coding MCQ</a></li>
+            <li><a href="test.html">Start Coding MCQ</a></li>
         </ul>
-        </p>
+
+        <div class="tips">
+            <h3>Tips:</h3>
+            <p>Use the "Submit & Next" button to complete the current section and proceed to the next.</p>
+            <p>Avoid confusion and maintain your focus.</p>
+            <p>Continue practicing your coding skills consistently for improvement.</p>
+        </div>
     </div>
+
+    <script>
+        function switchImage(imageName) {
+            document.getElementById('mainImage').src = imageName;
+        }
+    </script>
 </body>
 </html>
